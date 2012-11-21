@@ -1,0 +1,59 @@
+﻿.view-switcher {
+    padding: 0.5em; 
+    font-weight: normal;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error {
+    border: solid 1px #e80c4d;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#contact .ui-icon {
+    background: url('../../images/111-user.png') 50% 50% no-repeat;
+    background-size: 24px 22px;
+}
+
+#home .ui-icon {
+    background: url('../../images/53-house.png') 50% 50% no-repeat;
+    background-size: 24px 22px;
+}
+
+#map .ui-icon {
+    background: url('../../images/193-location-arrow.png') 50% 50% no-repeat;
+    background-size: 24px 22px;
+}
+
+.nav-glyphish-example .ui-btn .ui-icon {
+    width: 30px!important;
+    height: 30px!important;
+    margin-left: -15px !important;
+    box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.nav-glyphish-example .ui-btn .ui-btn-inner {
+    padding-top: 40px !important;
+}

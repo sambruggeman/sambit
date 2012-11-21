@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Map";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+<style type="text/css">
+    /*.page-map, .ui-content, #map-canvas { width: 100%; height: 100%; padding: 0; }*/
+
+    #map_canvas{
+        padding-top:10%;
+        padding-bottom:10%;
+        height:250px;
+        position:relative;
+        width:100%;
+        max-height:1600px;
+        overflow:hidden;
+        display:block;
+        margin-bottom: 20px;
+        border: 1px solid #333;
+
+    }
+</style>
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+
+<script type="text/javascript">
+    var geocoder;
+    var map;
+
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+            center: new google.maps.LatLng(50.812545, 3.322392),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+    }
+
+    function codeAddress() {
+        var address = "lindelaan 170 8550 Zwevegem, Belgium";
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        initialize();
+        codeAddress();
+    });
+</script>
+
+<div id="map_canvas"></div>

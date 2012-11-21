@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title> 
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/Mobile/css", "~/Content/jquerymobile/css")
+        @Scripts.Render("~/bundles/jquery", "~/bundles/jquerymobile")
+        <script>
+            $(document).ready(function () {
+                $.mobile.ajaxEnabled = false; 
+            });
+        </script>
+    </head> 
+<body> 
+
+    <div data-role="page" data-theme="c">
+
+        <div data-role="header">	
+            @*<h1>SAMBIT</h1>	*@
+            <div style="margin: 10px auto 7px auto; width: 95px;">
+                <img src="~/Images/logo_s.png" style="width:95px; height: 25px; " />
+            </div>
+	        <div class="nav-glyphish-example ui-navbar ui-mini" data-role="navbar">
+                @{
+                    object homeAttr = new {         id="home", data_icon="custom", data_corners="false", data_shadow="false",
+                                                    data_wrapperels="span", data_iconpos="top", data_theme="a", data_inline="true",
+                                                    @class="ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-a"   };
+                    object mapAttr = new {         id="map", data_icon="custom", data_corners="false", data_shadow="false",
+                                                    data_wrapperels="span", data_iconpos="top", data_theme="a", data_inline="true",
+                                                    @class="ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-a"   };
+                    object contactAttr = new {         id="contact", data_icon="custom", data_corners="false", data_shadow="false",
+                                                    data_wrapperels="span", data_iconpos="top", data_theme="a", data_inline="true",
+                                                    @class="ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-a"   };
+                }
+		        <ul>
+			        <li>
+                        @Html.ActionLink("Home", "Index", "Home", null, homeAttr)
+			        </li>
+			        <li>
+                        @Html.ActionLink("Map", "About", "Home", null, mapAttr)
+			        </li>
+			        <li>
+                        @*<a href="#" id="contact" data-icon="custom" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-iconpos="top" data-theme="a" data-inline="true" class="ui-btn ui-btn-inline ui-btn-icon-top ui-btn-up-a">
+                            Contact
+                        </a>*@
+                        @Html.ActionLink("Contact", "Contact", "Home", null, contactAttr)
+			        </li>
+		        </ul>
+	        </div><!-- /navbar -->
+        </div><!-- /footer -->
+
+        <div data-role="header" data-theme="c">
+            <h1>@ViewBag.Title</h1>
+        </div>
+
+        <div data-role="content">
+            @RenderSection("featured", false)
+            @RenderBody()		
+        </div>
+        <div class="view-switcher ui-bar-b">@Html.Partial("_LoginPartial")</div>
+        @Html.Partial("_ViewSwitcher")
+
+    </div>
+
+</body>
+</html>
